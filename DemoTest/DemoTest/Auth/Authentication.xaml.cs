@@ -21,7 +21,7 @@ namespace DemoTest.Auth
     /// </summary>
     public partial class Authentication : Window
     {
-        public DemoTestEntities2 db = new DemoTestEntities2();
+        public DemoTestEntities4 db = new DemoTestEntities4();
         public Authentication()
         {
             InitializeComponent();

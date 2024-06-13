@@ -19,7 +19,5 @@ namespace DemoTest
         public Nullable<int> Age { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
-    
-        public virtual Backwater Backwater { get; set; }
     }
 }

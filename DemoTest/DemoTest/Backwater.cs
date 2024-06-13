@@ -18,13 +18,9 @@ namespace DemoTest
         public string Name { get; set; }
         public Nullable<int> Fish_Count { get; set; }
         public Nullable<System.DateTime> Date_Start { get; set; }
-        public string Date_End { get; set; }
+        public Nullable<System.DateTime> Date_End { get; set; }
         public string Fish_Name { get; set; }
         public Nullable<int> Fish_Size { get; set; }
         public Nullable<int> FK_Employee { get; set; }
-    
-        public virtual Activity Activity { get; set; }
-        public virtual Beholder_Employee Beholder_Employee { get; set; }
-        public virtual Sales_Department Sales_Department { get; set; }
     }
 }

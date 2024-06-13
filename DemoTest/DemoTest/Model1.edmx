@@ -24,7 +24,7 @@
           <Property Name="Name" Type="varchar" MaxLength="50" />
           <Property Name="Fish_Count" Type="int" />
           <Property Name="Date_Start" Type="date" />
-          <Property Name="Date_End" Type="nchar" MaxLength="10" />
+          <Property Name="Date_End" Type="date" />
           <Property Name="Fish_Name" Type="varchar" MaxLength="50" />
           <Property Name="Fish_Size" Type="int" />
           <Property Name="FK_Employee" Type="int" />
@@ -58,60 +58,12 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <Association Name="FK_Activity_Backwater">
-          <End Role="Backwater" Type="Self.Backwater" Multiplicity="1" />
-          <End Role="Activity" Type="Self.Activity" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Backwater">
-              <PropertyRef Name="ID_Fish" />
-            </Principal>
-            <Dependent Role="Activity">
-              <PropertyRef Name="ID_Activity" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Backwater_Beholder_Employee">
-          <End Role="Beholder_Employee" Type="Self.Beholder_Employee" Multiplicity="1" />
-          <End Role="Backwater" Type="Self.Backwater" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Beholder_Employee">
-              <PropertyRef Name="ID_Employee" />
-            </Principal>
-            <Dependent Role="Backwater">
-              <PropertyRef Name="ID_Fish" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sales_Department_Backwater">
-          <End Role="Backwater" Type="Self.Backwater" Multiplicity="1" />
-          <End Role="Sales_Department" Type="Self.Sales_Department" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Backwater">
-              <PropertyRef Name="ID_Fish" />
-            </Principal>
-            <Dependent Role="Sales_Department">
-              <PropertyRef Name="ID_Department" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище DemoTestModelContainer">
           <EntitySet Name="Activity" EntityType="Self.Activity" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Backwater" EntityType="Self.Backwater" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Beholder_Employee" EntityType="Self.Beholder_Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sales_Department" EntityType="Self.Sales_Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Activity_Backwater" Association="Self.FK_Activity_Backwater">
-            <End Role="Backwater" EntitySet="Backwater" />
-            <End Role="Activity" EntitySet="Activity" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Backwater_Beholder_Employee" Association="Self.FK_Backwater_Beholder_Employee">
-            <End Role="Beholder_Employee" EntitySet="Beholder_Employee" />
-            <End Role="Backwater" EntitySet="Backwater" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sales_Department_Backwater" Association="Self.FK_Sales_Department_Backwater">
-            <End Role="Backwater" EntitySet="Backwater" />
-            <End Role="Sales_Department" EntitySet="Sales_Department" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -128,7 +80,6 @@
           <Property Name="Price" Type="Int32" />
           <Property Name="Fish_Count" Type="Int32" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Backwater" Relationship="Self.FK_Activity_Backwater" FromRole="Activity" ToRole="Backwater" />
         </EntityType>
         <EntityType Name="Backwater">
           <Key>
@@ -138,13 +89,10 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Fish_Count" Type="Int32" />
           <Property Name="Date_Start" Type="DateTime" Precision="0" />
-          <Property Name="Date_End" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Date_End" Type="DateTime" Precision="0" />
           <Property Name="Fish_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Fish_Size" Type="Int32" />
           <Property Name="FK_Employee" Type="Int32" />
-          <NavigationProperty Name="Activity" Relationship="Self.FK_Activity_Backwater" FromRole="Backwater" ToRole="Activity" />
-          <NavigationProperty Name="Beholder_Employee" Relationship="Self.FK_Backwater_Beholder_Employee" FromRole="Backwater" ToRole="Beholder_Employee" />
-          <NavigationProperty Name="Sales_Department" Relationship="Self.FK_Sales_Department_Backwater" FromRole="Backwater" ToRole="Sales_Department" />
         </EntityType>
         <EntityType Name="Beholder_Employee">
           <Key>
@@ -155,7 +103,6 @@
           <Property Name="Age" Type="Int32" />
           <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Backwater" Relationship="Self.FK_Backwater_Beholder_Employee" FromRole="Beholder_Employee" ToRole="Backwater" />
         </EntityType>
         <EntityType Name="Sales_Department">
           <Key>
@@ -165,7 +112,6 @@
           <Property Name="Orders_Count" Type="Int32" />
           <Property Name="Fishing_Count" Type="Int32" />
           <Property Name="Average_Fishin_Time" Type="Int32" />
-          <NavigationProperty Name="Backwater" Relationship="Self.FK_Sales_Department_Backwater" FromRole="Sales_Department" ToRole="Backwater" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -177,67 +123,19 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <Association Name="FK_Activity_Backwater">
-          <End Role="Backwater" Type="Self.Backwater" Multiplicity="1" />
-          <End Role="Activity" Type="Self.Activity" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Backwater">
-              <PropertyRef Name="ID_Fish" />
-            </Principal>
-            <Dependent Role="Activity">
-              <PropertyRef Name="ID_Activity" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Backwater_Beholder_Employee">
-          <End Role="Beholder_Employee" Type="Self.Beholder_Employee" Multiplicity="1" />
-          <End Role="Backwater" Type="Self.Backwater" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Beholder_Employee">
-              <PropertyRef Name="ID_Employee" />
-            </Principal>
-            <Dependent Role="Backwater">
-              <PropertyRef Name="ID_Fish" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Sales_Department_Backwater">
-          <End Role="Backwater" Type="Self.Backwater" Multiplicity="1" />
-          <End Role="Sales_Department" Type="Self.Sales_Department" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Backwater">
-              <PropertyRef Name="ID_Fish" />
-            </Principal>
-            <Dependent Role="Sales_Department">
-              <PropertyRef Name="ID_Department" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="DemoTestEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DemoTestEntities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Activity" EntityType="Self.Activity" />
           <EntitySet Name="Backwater" EntityType="Self.Backwater" />
           <EntitySet Name="Beholder_Employee" EntityType="Self.Beholder_Employee" />
           <EntitySet Name="Sales_Department" EntityType="Self.Sales_Department" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <AssociationSet Name="FK_Activity_Backwater" Association="Self.FK_Activity_Backwater">
-            <End Role="Backwater" EntitySet="Backwater" />
-            <End Role="Activity" EntitySet="Activity" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Backwater_Beholder_Employee" Association="Self.FK_Backwater_Beholder_Employee">
-            <End Role="Beholder_Employee" EntitySet="Beholder_Employee" />
-            <End Role="Backwater" EntitySet="Backwater" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Sales_Department_Backwater" Association="Self.FK_Sales_Department_Backwater">
-            <End Role="Backwater" EntitySet="Backwater" />
-            <End Role="Sales_Department" EntitySet="Sales_Department" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище DemoTestModelContainer" CdmEntityContainer="DemoTestEntities2">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DemoTestModelContainer" CdmEntityContainer="DemoTestEntities4">
           <EntitySetMapping Name="Activity">
             <EntityTypeMapping TypeName="DemoTestModel.Activity">
               <MappingFragment StoreEntitySet="Activity">

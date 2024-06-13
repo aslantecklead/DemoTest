@@ -7,6 +7,46 @@
         mc:Ignorable="d"
         Title="AdminWindow"  Height="800" Width="1200">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="187*"/>
+            <ColumnDefinition Width="213*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="67*"/>
+            <RowDefinition Height="129*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.ColumnSpan="2" Margin="0,268,0,0" Grid.RowSpan="2">
+            <DataGrid x:Name="dgList" Margin="20" IsReadOnly="True"  AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn FontSize="13" Header="Name" Binding="{Binding Name}"  Width="135"></DataGridTextColumn>
+                    <DataGridTextColumn FontSize="13" Header="Fish_Count" Binding="{Binding Fish_Count}"  Width="135"></DataGridTextColumn>
+                    <DataGridTextColumn FontSize="13" Header="Date_Start" Binding="{Binding Date_Start}"  Width="135"></DataGridTextColumn>
+                    <DataGridTextColumn FontSize="13" Header="Date_End" Binding="{Binding Date_End}"  Width="135"></DataGridTextColumn>
+                    <DataGridTextColumn FontSize="13" Header="Fish_Name" Binding="{Binding Fish_Name}"  Width="135"></DataGridTextColumn>
+                    <DataGridTextColumn FontSize="13" Header="Fish_Size" Binding="{Binding Fish_Size}"  Width="135"></DataGridTextColumn>
+                    <DataGridTextColumn FontSize="13" Header="Employee" Binding="{Binding Employee}" ></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <TextBox x:Name="Fish_Name" FontSize="16" HorizontalAlignment="Left" Margin="125,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="277" Height="36" Grid.Column="1"/>
+        <TextBox x:Name="Fish_Size" FontSize="16" HorizontalAlignment="Left" Margin="370,232,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="277" Height="36" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="Lake_Name" FontSize="16" HorizontalAlignment="Left" Margin="63,70,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="277" Height="36"/>
+        <TextBox x:Name="Count" FontSize="16" HorizontalAlignment="Left" Margin="63,155,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="277" Height="36"/>
+        <DatePicker x:Name="Start" FontSize="16" HorizontalAlignment="Left" Margin="375,68,0,0" Text="" VerticalAlignment="Top" Width="277" Height="36" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="cbEmp" FontSize="16" HorizontalAlignment="Left" Margin="127,155,0,0" Text="" VerticalAlignment="Top" Width="277" Height="36" Grid.Column="1"/>
+
+        <Button x:Name="Add" FontSize="15" Content="Добавить" HorizontalAlignment="Left" Margin="407,63,0,0" VerticalAlignment="Top" Height="36" Width="182" Click="Add_Click" Grid.Column="1"/>
+        <Button x:Name="Edit" FontSize="15" Content="Изменить" HorizontalAlignment="Left" Margin="407,0,0,0" VerticalAlignment="Center" Height="36" Width="182"  Grid.Column="1" Click="Edit_Click"/>
+        <Button x:Name="Delete" FontSize="15" Content="Удалить" HorizontalAlignment="Left" Margin="407,173,0,0" VerticalAlignment="Top" Height="36" Width="182" Click="Delete_Click" Grid.Column="1"/>
+        <TextBlock FontSize="15" HorizontalAlignment="Left" Margin="127,47,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="277" Height="23" Grid.Column="1"><Run Language="ru-ru" Text="Имя рыбы"/></TextBlock>
+        <TextBlock FontSize="15" HorizontalAlignment="Left" Margin="370,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="279" Height="24" Grid.ColumnSpan="2"><Run Language="ru-ru" Text="Рамер рыбы"/></TextBlock>
+        <TextBlock FontSize="15" HorizontalAlignment="Left" Margin="377,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="278" Height="23" Grid.ColumnSpan="2"><Run Language="ru-ru" Text="Начало"/></TextBlock>
+        <TextBlock FontSize="15" HorizontalAlignment="Left" Margin="129,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="277" Height="24" Grid.Column="1"><Run Language="ru-ru" Text="Смотрящий"/></TextBlock>
+        <TextBlock FontSize="15" HorizontalAlignment="Left" Margin="64,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="277" Height="25"><Run Language="ru-ru" Text="Озеро"/></TextBlock>
+        <TextBlock FontSize="15" HorizontalAlignment="Left" Margin="63,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="279" Height="24"><Run Language="ru-ru" Text="Количество рыбы"/></TextBlock>
+        <TextBlock FontSize="15" HorizontalAlignment="Left" Margin="77,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="277" Height="25" Text=""/>
+        <TextBlock FontSize="15" HorizontalAlignment="Left" Margin="372,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="278" Height="23" Grid.ColumnSpan="2"><Run Language="ru-ru" Text="Конец"/></TextBlock>
+        <DatePicker x:Name="End" FontSize="16" HorizontalAlignment="Left" Margin="370,160,0,0" Text="" VerticalAlignment="Top" Width="277" Height="36" Grid.ColumnSpan="2"/>
+
     </Grid>
 </Window>

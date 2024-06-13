@@ -13,10 +13,10 @@ namespace DemoTest
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DemoTestEntities2 : DbContext
+    public partial class DemoTestEntities4 : DbContext
     {
-        public DemoTestEntities2()
-            : base("name=DemoTestEntities2")
+        public DemoTestEntities4()
+            : base("name=DemoTestEntities4")
         {
         }
     

@@ -18,7 +18,5 @@ namespace DemoTest
         public Nullable<int> Orders_Count { get; set; }
         public Nullable<int> Fishing_Count { get; set; }
         public Nullable<int> Average_Fishin_Time { get; set; }
-    
-        public virtual Backwater Backwater { get; set; }
     }
 }

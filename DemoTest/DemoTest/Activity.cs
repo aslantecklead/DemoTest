@@ -20,7 +20,5 @@ namespace DemoTest
         public Nullable<int> Price { get; set; }
         public Nullable<int> Fish_Count { get; set; }
         public string Description { get; set; }
-    
-        public virtual Backwater Backwater { get; set; }
     }
 }

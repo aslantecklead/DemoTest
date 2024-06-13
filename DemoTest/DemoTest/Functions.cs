@@ -8,7 +8,7 @@ namespace DemoTest
 {
     internal class Functions
     {
-        public DemoTestEntities2 db = new DemoTestEntities2();
+        public DemoTestEntities4 db = new DemoTestEntities4();
         public int CountEmployees()
         {
             return db.Beholder_Employee.ToList().Count;
